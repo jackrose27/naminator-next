@@ -11,7 +11,7 @@ vi.mock("@anthropic-ai/sdk", () => ({
   }),
 }));
 
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { generateNameCombinations } from "@/lib/anthropic";
 
 // Helper: build the response shape that anthropic.messages.create returns
