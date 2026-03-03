@@ -6,6 +6,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 describe("Prisma Database", () => {
+  // Clean up test data before each test
   beforeEach(async () => {
     await prisma.user.deleteMany({
       where: { email: "test@example.com" },
