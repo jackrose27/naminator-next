@@ -15,7 +15,7 @@ describe("Prisma Database", () => {
   beforeAll(async () => {
     await prisma.$connect();
   });
-
+  
   afterAll(async () => {
     await prisma.$disconnect();
   });
