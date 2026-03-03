@@ -20,6 +20,7 @@ describe("Prisma Database", () => {
     await prisma.$disconnect();
   });
 
+  // Test creating and reading a NameCombinationSet with related GeneratedName and User
   it("creates and reads a full NameCombinationSet", async () => {
     // 1. Create User
     const user = await prisma.user.create({
