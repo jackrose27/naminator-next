@@ -1,12 +1,16 @@
 // @vitest-environment node
 
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, afterAll, beforeEach } from "vitest";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 describe("Prisma Database", () => {
-
+  beforeEach(async () => {
+    await prisma.user.deleteMany({
+      where: { email: "test@example.com" },
+    });
+  });
   beforeAll(async () => {
     await prisma.$connect();
   });
@@ -16,7 +20,6 @@ describe("Prisma Database", () => {
   });
 
   it("creates and reads a full NameCombinationSet", async () => {
-
     // 1. Create User
     const user = await prisma.user.create({
       data: {
@@ -63,7 +66,5 @@ describe("Prisma Database", () => {
     await prisma.user.delete({
       where: { id: user.id },
     });
-
   });
-
 });
